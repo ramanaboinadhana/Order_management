@@ -26,6 +26,7 @@ class SalesOrder(Document):
         total = 0
         for i in self.items:
             total += i.amount
+            
         
         self.total_amount = total
 
