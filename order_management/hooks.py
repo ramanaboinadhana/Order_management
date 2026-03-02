@@ -123,6 +123,11 @@ app_license = "MIT"
 # 		"on_trash": "method"
 # 	}
 # }
+doc_events = {
+    "Sales Order": {
+        "on_update": "order_management.sales_order.on_update"
+    }
+}
 
 # Scheduled Tasks
 # ---------------
