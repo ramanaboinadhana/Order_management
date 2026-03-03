@@ -22,7 +22,15 @@ bench --site yoursite install-app order_management
 
 GET Confirmed Orders:
 
-/api/method/order_management.api.get_orders
+/api/method/order_management.orders.get_orders
+
+Create custome:
+
+/api/method/order_management.customer.create_customer
+
+Example:
+
+http://localhost:8000/api/method/order_management.customer.create_customer?customer_name=Ram&email=ram@gmail.com&phone=9876543210
 
 ## Tech Used
 - Frappe Framework

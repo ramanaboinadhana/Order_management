@@ -11,7 +11,10 @@ def get_orders():
     for order in orders:
         order["items"] = frappe.get_all(
             "Sales Order Item",
-            filters={"parent": order["name"]},
+            filters={
+                "parent": order["name"],
+                "parenttype": "Sales Order"
+            },
             fields=["item", "qty", "amount"]
         )
 

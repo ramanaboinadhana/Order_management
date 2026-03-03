@@ -1,16 +1,16 @@
 import frappe
 
-
-frappe.enqueue(
-    "order_management.tasks.send_email",
-    doc_name=self.name
-)
-
-def send_email(doc_name):
-    doc = frappe.get_doc("Sales Order", doc_name)
+def send_order_email(order_name):
+    order = frappe.get_doc("Sales Order", order_name)
 
     frappe.sendmail(
         recipients=["test@gmail.com"],
-        subject="Order Confirmed",
-        message=f"Order {doc.name} confirmed"
+        subject=f"Order Confirmed: {order.name}",
+        message=f"""
+        Dear Customer,<br><br>
+        Your order <b>{order.name}</b> has been confirmed.<br><br>
+        Thank you.
+        """
     )
+
+    frappe.logger().info(f"Email sent for order {order.name}")
